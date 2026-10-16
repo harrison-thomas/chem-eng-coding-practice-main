@@ -1,6 +1,6 @@
 # 01: Vapour Pressure of Water
 
-**Problem:** Plot the vapour pressure of water against temperature from 0 to 200 °C and find where it reaches 1 atm.
+**Problem:** Plot the vapour pressure of water against temperature from 1 to 374 °C and find where it reaches 1 atm.
 
 **Equation (Antoine):** log10(P) = A − B / (C + T)
 
@@ -11,13 +11,13 @@ A = 8.07131
 B = 1730.63 
 C = 233.426
 
-100-374°C (above NBP and below critical temperature):  
+99-374°C (above NBP and below critical temperature):  
 A = 8.14019
 B = 1810.94
 C = 244.485
 
-T = Temperature (Kelvin)  
-P = Vapour pressure (bar) 
+T = Temperature (Degrees Celsius)  
+P = Vapour pressure (mmHg) 
 
 #
 
@@ -37,26 +37,28 @@ Research what equation tells us
 Define constants and temperature range via vectors  
 Establish calculation  
 Plot results graphically  
-Determine temperature at 1 bar  
+Determine temperature at 1 atm   
 
 #
 
 **Notes:**  
 760 mmHg = 1.000 atm = typical atmospheric pressure at sea level  
 The equation reaaranged for P will be P = 10^(A-B/(C+T))  
-The equation, to my knowledge and explanation, shows the pressure at which water vapour would begin to condense for a given temperature. Essentially the gas-liquid line of a phase diagram.  
+The equation, to my knowledge and explanation, shows the pressure at which water vapour and liquid coexist for a given temperature. Essentially the gas-liquid line of a phase diagram.  
 
 #
 
-The curve crosses 1 atm at about 99.8390°C, which matches the known boiling point of water.
+The curve crosses 1 atm at about 99.84°C, which is close to the known boiling point of water.
 
-![alt text](image.png)
+![alt text](VapourPressure.png)
 
-![alt text](image-1.png)
 
-**What I learned:** Keeping the graph linear makes the lower range unreadable (given it is an exponential equation), so a logarithmic scale must be used. It is interesting to see how the 2 lines deviate when the full range of values are plotted for each set of coefficients.  
+
+**What I learned:** Keeping the graph linear makes the lower range unreadable (given it is an exponential equation), so a logarithmic scale must be used. It was interesting to see how the 2 lines deviate when I tried plotting full range of values are plotted for each set of coefficients.  
 **There is a very small difference between my graphed value (99.8390°C) and the known value (99.97°C). The Antoine constants are a fit of data, not an exact law, and the estimated value from the graph via interpolation is a straight line estimate of a curve, and will not be fully exact.**
 
+## Percent Error:
 
+The interpolated crossing at 760 mmHg was 99.84 °C against an accepted boiling point of 99.97 °C, a difference of 0.13 °C (−0.13%, or −0.035% in kelvin), consistent with the accuracy of Antoine constants fitted over a limited range.
 
 **Files:** `vapour_pressure.m` (MATLAB), `vapour_pressure.py` (Python)
