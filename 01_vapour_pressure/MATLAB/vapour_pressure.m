@@ -24,7 +24,7 @@ P_ATM = 760;
 P_LOW = 10.^(A_LOW - B_LOW ./ (C_LOW + T_LOW));
 P_HIGH = 10.^(A_HIGH - B_HIGH ./ (C_HIGH + T_HIGH));
 
-ONE_BAR_TEMP = interp1(P_HIGH, T_HIGH, P_ATM);
+ONE_ATM_TEMP = interp1(P_HIGH, T_HIGH, P_ATM);
 
 % Plotting Pressure against Temperature
 
@@ -32,13 +32,13 @@ semilogy(T_LOW, P_LOW, "r")
 hold on
 semilogy(T_HIGH, P_HIGH, "b")
 yline(P_ATM, "g")
-xline(ONE_BAR_TEMP, "g")
-plot(ONE_BAR_TEMP, P_ATM, "x")
+xline(ONE_ATM_TEMP, "g")
+plot(ONE_ATM_TEMP, P_ATM, "x")
 
 title("Pressure against Temperature for water Vapourisation")
 ylabel("Pressure / mmHg")
 xlabel("Temperature / °C")
 legend("Water 1-99°C", "Water 100-374°C", "760 mmHg", "Temp at 760mmHg", "Location", "southeast")
-xticks([0, 50, ONE_BAR_TEMP, 150, 200, 250, 300, 350])
+xticks([0, 50, ONE_ATM_TEMP, 150, 200, 250, 300, 350])
 ax = gca();
 exportgraphics(ax, "VapourPressure.jpg")

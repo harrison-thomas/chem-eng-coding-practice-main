@@ -4,9 +4,15 @@
 
 #
 
+MATLAB:  
 The curve crosses 1 atm at about 99.84°C, which is close to the known boiling point of water.
 
-![Vapour pressure of water against temperature ](VapourPressure.jpg)
+Python:  
+The curve crosses 1 atm at about 100.49°C, which is also close to the known boiling point.
+
+![Vapour pressure of water against temperature with MATLAB](VapourPressure.jpg)
+
+![Vapour pressure of water against temperature with Python](vapour_pressure_python.png)
 
 #
 
@@ -27,7 +33,11 @@ Determine temperature at 1 atm
 
 ## Percent Error:
 
-The interpolated crossing at 760 mmHg was 99.84 °C against an accepted boiling point of 99.97 °C, a difference of 0.13 °C (−0.13%, or −0.035% in kelvin), consistent with the accuracy of Antoine constants fitted over a limited range.
+MATLAB:  
+The interpolated crossing at 760 mmHg was 99.84 °C against an accepted boiling point of 99.97 °C, a difference of 0.13°C (−0.13%, or −0.035% in kelvin), consistent with the accuracy of Antoine constants fitted over a limited range.
+
+Python:  
+The crossing for the python method was 100.49°C against the accepted value of 99.97°C, a difference of 0.52°C (+0.52%, or +0.14% in kelvin). This is a much larger error than the MATLAB method.
 
 #
 
