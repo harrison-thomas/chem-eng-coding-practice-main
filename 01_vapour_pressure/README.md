@@ -6,7 +6,7 @@
 
 The curve crosses 1 atm at about 99.84°C, which is close to the known boiling point of water.
 
-![alt text](image-3.png)
+![Vapour pressure of water against temperature ](VapourPressure.jpg)
 
 #
 
