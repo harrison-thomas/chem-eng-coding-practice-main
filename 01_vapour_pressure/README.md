@@ -10,9 +10,9 @@ The curve crosses 1 atm at about 99.84°C, which is close to the known boiling p
 Python:  
 The curve crosses 1 atm at about 100.49°C, which is also close to the known boiling point.
 
-![Vapour pressure of water against temperature with MATLAB](MATLAB.VapourPressure.jpg)
+![Vapour pressure of water against temperature with MATLAB](MATLAB/VapourPressure.jpg)
 
-![Vapour pressure of water against temperature with Python](PYTHON.vapour_pressure_python.png)
+![Vapour pressure of water against temperature with Python](PYTHON/vapour_pressure_python.png)
 
 #
 
