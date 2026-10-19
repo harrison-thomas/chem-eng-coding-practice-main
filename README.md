@@ -3,7 +3,7 @@
 | # | Exercise | Topic | Status |
 |---|----------|-------|--------|
 | 01 | [Vapour pressure curve](01_vapour_pressure/) | Antoine equation, plotting | Complete |
-| 02 | [Mass Balance Solver](01_mass_balance/) | x | In Progress |
+| 02 | [Mass Balance Solver](02_mass_balance/) | x | In Progress |
 
 I'll add rows as I go.
 
