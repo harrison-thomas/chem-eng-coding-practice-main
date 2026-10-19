@@ -1,6 +1,6 @@
-# NN: Title of Exercise
+# 02: Mass Balance Solver
 
-**Status:** Not started / In progress / Done  
+**Status:** In Progress
 **Tools:** Python / MATLAB / Excel  
 **Time spent:** ~X hours
 
@@ -8,22 +8,77 @@
 
 ## Problem
 
-One or two sentences: what are you modelling or calculating, and what is the end result (a plot, a number, a tool)?
+This project solves steady-state mass balances for a small process flowsheet by writing the component and total balances as a linear system (Ax = b) and solving for all unknown stream flows and compositions at once. Results are cross-checked between Python and Excel, and the solver checks that the balances close and flags under- or over-specified problems using a degrees-of-freedom analysis.
 
 ## Expected result (written BEFORE coding)
 
-What do you think the answer or graph should look like, and why? Include a rough number or shape you can check against.
+Mass Balance should be consistent with my own solved answer and have the same values across both the python and excel methods of solving.
 
 ## Theory
 
-- Key equation(s), with every symbol and its units defined
-- Assumptions and the range where the model is valid
-- One or two sentences in your own words on what the equation means physically
+- Stream input = Stream output
+- System here is steady state, so there is no changing process characteristics
+
+- Degree of freedom analysis
+    4 unknowns:
+    F3 Composition
+    F3 Flow rate
+    F4 Flow rate
+    F5 Flow rate
+
+    4 independent equations:
+    Ethanol in mixer = ethanol out mixer
+    Water in mixer = water out mixer
+    Ethanol in seperator = Ethanol out seperator
+    Water in seperator = Water out seperator
+
+    Degrees of freedom = 4 - 4 = 0 
+    Therefore the system can be solved in principle
 
 ## Method
 
-1. Step-by-step outline of your approach
-2. Keep it to what you did and why, not the code itself
+**1. Define the system**
+- [X] Choose a small flowsheet (e.g. one mixer + one separator, 2 components) and sketch it
+- [X] Label every stream (F1, F2, ...) and every unit (M1, S1, ...)
+- [X] List what is known (flows, compositions, split fractions) and what is unknown
+- [X] Solve it by hand first, so you have an answer to check against
+
+**2. Degrees of freedom analysis**
+- [X] Count unknowns and independent equations for each unit and for the whole system
+- [X] Predict: is the problem solvable, under-specified or over-specified?
+- [X] Record the prediction *before* running any code
+
+**3. Write the balances**
+- [ ] Total mass balance for each unit
+- [ ] Component balance for each component in each unit
+- [ ] Any extra relationships (split fractions, specified recoveries)
+- [ ] Note which balances are redundant (e.g. component balances plus composition constraints can duplicate the total balance)
+
+**4. Convert to matrix form (Ax = b)**
+- [ ] Decide the order of the unknowns in `x`
+- [ ] Decide what each row of `A` represents and what each column represents
+- [ ] Put all known values into `b`
+- [ ] Check dimensions: is `A` square? If not, why not?
+
+**5. Solve it in two tools**
+- [ ] Python: solve the linear system with NumPy
+- [ ] Excel: solve it with matrix functions (or Solver as a cross-check)
+- [ ] Compare both against your hand solution
+
+**6. Validate**
+- [ ] Do all balances close (in = out) to within rounding?
+- [ ] Are all flows positive and all mass fractions between 0 and 1?
+- [ ] Do the fractions in each stream sum to 1?
+
+**7. Break it on purpose**
+- [ ] Remove one specification (under-specified): what does each tool do?
+- [ ] Add one redundant specification (over-specified, consistent): what happens?
+- [ ] Add one contradictory specification: what happens?
+- [ ] Compare these results with your degrees-of-freedom prediction from step 2
+
+**8. Extend (optional)**
+- [ ] Automate building `A` and `b` from a description of the streams and units
+- [ ] Add a recycle stream and see what changes
 
 ## Results
 
