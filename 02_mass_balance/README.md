@@ -14,6 +14,12 @@ This project solves steady-state mass balances for a small process flowsheet by 
 
 Mass Balance should be consistent with my own solved answer and have the same values across both the python and excel methods of solving.
 
+Hand solved result:  
+Stream 3 total flow rate = 150kg/h
+Stream 3 composition = 1/3 ethanol, 2/3 water
+Stream 4 flow rate = initially 56.6825kg/h, but corrected to 56.667kg/h
+Stream 5 flow rate = 93.33kh/h
+
 ## Theory
 
 - Stream input = Stream output
@@ -49,19 +55,19 @@ Mass Balance should be consistent with my own solved answer and have the same va
 - [X] Record the prediction *before* running any code
 
 **3. Write the balances**
-- [ ] Total mass balance for each unit
-- [ ] Component balance for each component in each unit
-- [ ] Any extra relationships (split fractions, specified recoveries)
-- [ ] Note which balances are redundant (e.g. component balances plus composition constraints can duplicate the total balance)
+- [X] Total mass balance for each unit
+- [X] Component balance for each component in each unit
+- [X] Any extra relationships (split fractions, specified recoveries)
+- [X] Note which balances are redundant (e.g. component balances plus composition constraints can duplicate the total balance)
 
 **4. Convert to matrix form (Ax = b)**
-- [ ] Decide the order of the unknowns in `x`
-- [ ] Decide what each row of `A` represents and what each column represents
-- [ ] Put all known values into `b`
-- [ ] Check dimensions: is `A` square? If not, why not?
+- [X] Decide the order of the unknowns in `x`
+- [X] Decide what each row of `A` represents and what each column represents
+- [X] Put all known values into `b`
+- [X] Check dimensions: is `A` square?
 
 **5. Solve it in two tools**
-- [ ] Python: solve the linear system with NumPy
+- [X] Python: solve the linear system with NumPy
 - [ ] Excel: solve it with matrix functions (or Solver as a cross-check)
 - [ ] Compare both against your hand solution
 
@@ -82,34 +88,49 @@ Mass Balance should be consistent with my own solved answer and have the same va
 
 ## Results
 
-![Description of the plot](plot.png)
+Python:  
 
-Key numbers, with units. Add a table if you have several.
+Solving the mass balances as a linear system `A x = b` gives:
+
+| Stream | Quantity | Value | Units |
+|--------|----------|-------|-------|
+| F3 | Total flow (from F1 + F2) | 150 | kg/h |
+| F3 | Ethanol mass fraction | 0.3333 | kg/kg |
+| F4 | Total flow | 56.667 | kg/h |
+| F5 | Total flow | 93.333 | kg/h |
+
+**System solved** (unknowns `x = [x_3_ethanol, F4, F5]`):
+
+```
+┌                    ┐ ┌          ┐   ┌     ┐
+│  150    0      0   │ │ x_3_eth  │   │  50 │
+│    0    1      1   │ │   F4     │ = │ 150 │
+│ -150   0.8   0.05  │ │   F5     │   │   0 │
+└                    ┘ └          ┘   └     ┘
+```
+
+Row 1 is the ethanol balance on the mixer, row 2 the total balance on the separator, and row 3 the ethanol balance on the separator.
+
+**Agreement with hand calculation:** Python and hand-solved values agree to [number of decimal places / `np.allclose` result].
+
+**Residual** `A @ x - b`: [max absolute value]
 
 ## Validation
 
 How did you check the result is right?
 
-- Compared with: (textbook value, hand calculation, NIST data, second tool)
-- Difference: absolute and % (say which units, e.g. K vs °C)
-- Sanity checks: (mass balances close, values physical, limits behave sensibly)
-
-## Error analysis
-
-- What are the plausible sources of error?
-- Which did you **test** (e.g. changed step size, swapped coefficients), and what did you find?
-- Which are still just hypotheses?
+- Compared with: Hand calculated values 
+- Sanity checks: Mass balance closes, and (A @ x - b) is reasonably close to 0
 
 ## What I learned
 
-- Something technical
-- Something about the tool or code
-- One thing that surprised me
+- Difference between np.array and np.matrix, as only by using an array could I index within the sublists
+- A clean solve doesnt mean correct answers: I had to correct some values in A and b to get the correct answer even though the matrix was successfully being solved
 
 ## Limitations and next steps
 
-- What this model ignores
-- How you could extend it (stretch ideas)
+- Just 2 components, hard coded numbers, fixed flowsheet
+- Still need to build the excel cross check, and automate the filling of A and b
 
 ---
 
