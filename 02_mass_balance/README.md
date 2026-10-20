@@ -2,7 +2,7 @@
 
 **Status:** In Progress
 **Tools:** Python / MATLAB / Excel  
-**Time spent:** ~X hours
+**Time spent:** ~2 hours
 
 ---
 
@@ -68,19 +68,13 @@ Stream 5 flow rate = 93.33kh/h
 
 **5. Solve it in two tools**
 - [X] Python: solve the linear system with NumPy
-- [ ] Excel: solve it with matrix functions (or Solver as a cross-check)
-- [ ] Compare both against your hand solution
+- [X] Excel: solve it with matrix functions (or Solver as a cross-check)
+- [X] Compare both against your hand solution
 
 **6. Validate**
-- [ ] Do all balances close (in = out) to within rounding?
-- [ ] Are all flows positive and all mass fractions between 0 and 1?
-- [ ] Do the fractions in each stream sum to 1?
-
-**7. Break it on purpose**
-- [ ] Remove one specification (under-specified): what does each tool do?
-- [ ] Add one redundant specification (over-specified, consistent): what happens?
-- [ ] Add one contradictory specification: what happens?
-- [ ] Compare these results with your degrees-of-freedom prediction from step 2
+- [X] Do all balances close (in = out) to within rounding?
+- [X] Are all flows positive and all mass fractions between 0 and 1?
+- [X] Do the fractions in each stream sum to 1?
 
 **8. Extend (optional)**
 - [ ] Automate building `A` and `b` from a description of the streams and units
@@ -121,16 +115,18 @@ How did you check the result is right?
 
 - Compared with: Hand calculated values 
 - Sanity checks: Mass balance closes, and (A @ x - b) is reasonably close to 0
+- Excel solver provides consistent answers
 
 ## What I learned
 
 - Difference between np.array and np.matrix, as only by using an array could I index within the sublists
 - A clean solve doesnt mean correct answers: I had to correct some values in A and b to get the correct answer even though the matrix was successfully being solved
+- Matrix multiplication in excel - using MMULT and MINVERSE
 
 ## Limitations and next steps
 
 - Just 2 components, hard coded numbers, fixed flowsheet
-- Still need to build the excel cross check, and automate the filling of A and b
+- Still need to automate the filling of A and b
 
 ---
 
