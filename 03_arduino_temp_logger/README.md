@@ -1,29 +1,41 @@
-# NN: Title of Exercise
+# 03: Arduino Temperature Logger
 
-**Status:** Not started / In progress / Done  
-**Tools:** Python / MATLAB / Excel  
+**Status:** In Progress
+**Tools:** Python / Excel / Arduino / Plotting
 **Time spent:** ~X hours
 
 ---
 
 ## Problem
 
-One or two sentences: what are you modelling or calculating, and what is the end result (a plot, a number, a tool)?
+Connect a temperature logger via an Arduino Breadboard to send regular inputs to python, which will display them on a live plot (temperature against time). Will also send the inputs to an Excel file, and can experiment with varying the time between inputs and % error in different environments.
 
 ## Expected result (written BEFORE coding)
 
-What do you think the answer or graph should look like, and why? Include a rough number or shape you can check against.
+Resultant plot should indicate any temperature changes (eg covering temperature logger with hand to increase), and ideally the plot should move with time (so can show over a longer time). Excel sheet should show the recorded termpature, and either the time taken or time since logging started.
 
 ## Theory
 
-- Key equation(s), with every symbol and its units defined
-- Assumptions and the range where the model is valid
-- One or two sentences in your own words on what the equation means physically
+- Temperature Module: DHT11
+
+Has an 8 bit microcontroller for processing sensor data and outputtinv digitally, removing need for an external analogue-to-digital converter.
+
+Temperature range: 0-50°C, 2 degree accuracy. Operating voltage is 3-5V DC.
+
+Sampling rate: 1Hz. Most have a built in resistor, but if not a 5-10KOhm resistor is needed.
+
+- Software: Arduino, transmit sensor inputs to python for plotting
 
 ## Method
 
-1. Step-by-step outline of your approach
-2. Keep it to what you did and why, not the code itself
+1. Research into the temperature module I have and what is required/syntax
+2. Look into sending data between Arduino and python
+3. Connect circuit via breadboard
+4. Write the code in Arduino IDE
+5. Test and amend as nessessary
+6. Write the python script (plotting using Matplotlib)
+7. Connect python and Arduinio
+8. Test it (and break it)
 
 ## Results
 
@@ -69,12 +81,12 @@ Requirements: list libraries (or point to `requirements.txt`).
 
 ## Files
 
-| File | Description |
-|------|-------------|
-| `script.py` | Python version |
-| `script.m` | MATLAB version |
+| File          | Description                |
+| ------------- | -------------------------- |
+| `script.py` | Python version             |
+| `script.m`  | MATLAB version             |
 | `data.xlsx` | Excel version / input data |
-| `plot.png` | Output figure |
+| `plot.png`  | Output figure              |
 
 ## Sources
 
