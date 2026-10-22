@@ -26,7 +26,7 @@ Sampling rate: 1Hz. Most have a built in resistor, but if not a 5-10KOhm resisto
 
 - Software: Arduino, transmit sensor inputs to python for plotting
 
-![1792689072858](image/README/1792689072858.png)
+![1792708836501](image/README/1792708836501.png)
 
 Draft of the circuit, notice the three pins of the DHT11 Module. The first is VCC, connected to 5V. The second is the Data pin, connected to D10 here, and the third is the GND pin, connected to GND
 
