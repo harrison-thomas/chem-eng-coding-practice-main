@@ -18,7 +18,7 @@ Resultant plot should indicate any temperature changes (eg covering temperature 
 
 - Temperature Module: DHT11
 
-Has an 8 bit microcontroller for processing sensor data and outputtinv digitally, removing need for an external analogue-to-digital converter.
+Has an 8 bit microcontroller for processing sensor data and outputting digitally, removing need for an external analogue-to-digital converter.
 
 Temperature range: 0-50°C, 2 degree accuracy. Operating voltage is 3-5V DC.
 
@@ -26,7 +26,7 @@ Sampling rate: 1Hz. Most have a built in resistor, but if not a 5-10KOhm resisto
 
 - Software: Arduino, transmit sensor inputs to python for plotting
 
-![1792622238413](image/README/1792622238413.png)
+![1792689072858](image/README/1792689072858.png)
 
 Draft of the circuit, notice the three pins of the DHT11 Module. The first is VCC, connected to 5V. The second is the Data pin, connected to D10 here, and the third is the GND pin, connected to GND
 

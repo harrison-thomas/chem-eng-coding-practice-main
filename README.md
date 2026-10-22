@@ -1,9 +1,10 @@
 ## Contents
 
-| # | Exercise | Topic | Status |
-|---|----------|-------|--------|
-| 01 | [Vapour pressure curve](01_vapour_pressure/) | Antoine equation, plotting | Complete |
-| 02 | [Mass Balance Solver](02_mass_balance/) | Matrices in python/excel, data validation | Complete |
+| #  | Exercise                                    | Topic                                     | Status   |
+| -- | ------------------------------------------- | ----------------------------------------- | -------- |
+| 01 | [Vapour pressure curve](01_vapour_pressure/) | Antoine equation, plotting                | Complete |
+| 02 | [Mass Balance Solver](02_mass_balance/)      | Matrices in python/excel, data validation | Complete |
+| 03 | [Arduino Temperature Logger](03_arduino_temp_logger/) | Arduino/circuits, python, plotting | In Progress |
 
 I'll add rows as I go.
 
